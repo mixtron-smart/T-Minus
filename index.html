@@ -1,425 +1,394 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d7378; -webkit-text-stroke: #6d7378}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca; min-height: 16.0px}
-    span.s1 {font-kerning: none; background-color: #171818}
-    span.s2 {font-kerning: none; color: #8cd3fe; background-color: #171818; -webkit-text-stroke: 0px #8cd3fe}
-    span.s3 {font-kerning: none; color: #6d6d6d; background-color: #171818; -webkit-text-stroke: 0px #6d6d6d}
-    span.s4 {font-kerning: none; color: #4689cc; background-color: #171818; -webkit-text-stroke: 0px #4689cc}
-    span.s5 {font-kerning: none; color: #cacaca; background-color: #171818; -webkit-text-stroke: 0px #cacaca}
-    span.s6 {font-kerning: none; color: #c27e65; background-color: #171818; -webkit-text-stroke: 0px #c27e65}
-    span.s7 {font-kerning: none; color: #d4d4d4; background-color: #171818; -webkit-text-stroke: 0px #d4d4d4}
-    span.s8 {font-kerning: none; color: #a7c598; background-color: #171818; -webkit-text-stroke: 0px #a7c598}
-    span.s9 {font-kerning: none; color: #6d7378; background-color: #171818; -webkit-text-stroke: 0px #6d7378}
-    span.s10 {font-kerning: none}
-    span.s11 {font-kerning: none; color: #71c083; background-color: #171818; -webkit-text-stroke: 0px #71c083}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>赶飞机计算器</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 React 和 ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- 引入 Babel 用于解析 JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        /* 自定义滑块样式 */
+        input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent; 
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #3b82f6; /* blue-500 */
+            border: 4px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            margin-top: -9px; /* 垂直居中 */
+            cursor: pointer;
+            position: relative;
+            z-index: 20;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #e2e8f0; /* slate-200 */
+            border-radius: 3px;
+        }
+        
+        /* 隐藏滚动条但保持滚动功能 (Chrome/Safari) */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* 隐藏滚动条 (Firefox) */
+        .hide-scrollbar {
+            scrollbar-width: none;
+        }
+
+        body {
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">html</span><span class="s5"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s1">"zh-CN"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s6">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">meta</span><span class="s5"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s5"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">title</span><span class="s3">&gt;</span><span class="s1">赶飞机计算器</span><span class="s3">&lt;/</span><span class="s4">title</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 引入 Tailwind CSS --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 引入 React 和 ReactDOM --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">crossorigin</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react@18/umd/react.production.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">crossorigin</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 引入 Babel 用于解析 JSX --&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/@babel/standalone/babel.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s4">script</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">/* 自定义滑块样式 */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s4">input</span><span class="s7">[</span><span class="s6">type</span><span class="s7">=</span><span class="s6">range</span><span class="s7">]</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-appearance:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span><span class="s5"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s6">transparent</span><span class="s7">;</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">input</span><span class="s7">[</span><span class="s6">type</span><span class="s7">=</span><span class="s6">range</span><span class="s7">]</span><span class="s1">::-webkit-slider-thumb</span><span class="s5"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-appearance:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s1"> </span><span class="s8">24px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s8">24px</span><span class="s7">;</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s5"> </span><span class="s8">50%</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #3b82f6</span><span class="s7">;</span><span class="s1"> </span><span class="s9">/* blue-500 */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s8">4px</span><span class="s1"> </span><span class="s6">solid</span><span class="s1"> #fff</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s8">0</span><span class="s1"> </span><span class="s8">2px</span><span class="s1"> </span><span class="s8">4px</span><span class="s1"> </span><span class="s6">rgba(</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0</span><span class="s7">,</span><span class="s8">0.15</span><span class="s6">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">margin-top:</span><span class="s1"> </span><span class="s8">-9px</span><span class="s7">;</span><span class="s1"> </span><span class="s9">/* 垂直居中 */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">cursor:</span><span class="s1"> </span><span class="s6">pointer</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s6">relative</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">z-index:</span><span class="s1"> </span><span class="s8">20</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">input</span><span class="s7">[</span><span class="s6">type</span><span class="s7">=</span><span class="s6">range</span><span class="s7">]</span><span class="s1">::-webkit-slider-runnable-track</span><span class="s5"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s8">100%</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s1"> </span><span class="s8">6px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">cursor:</span><span class="s1"> </span><span class="s6">pointer</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #e2e8f0</span><span class="s7">;</span><span class="s1"> </span><span class="s9">/* slate-200 */</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s5"> </span><span class="s8">3px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">/* 隐藏滚动条但保持滚动功能 (Chrome/Safari) */</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">.hide-scrollbar::-webkit-scrollbar</span><span class="s5"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s6">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">/* 隐藏滚动条 (Firefox) */</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">        </span></span><span class="s1">.hide-scrollbar</span><span class="s5"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">scrollbar-width:</span><span class="s5"> </span><span class="s6">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s4">body</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-tap-highlight-color:</span><span class="s5"> </span><span class="s6">transparent</span><span class="s7">;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s5"> </span><span class="s1">-apple-system</span><span class="s7">,</span><span class="s5"> </span><span class="s1">BlinkMacSystemFont</span><span class="s7">,</span><span class="s5"> </span><span class="s11">"Segoe UI"</span><span class="s7">,</span><span class="s5"> </span><span class="s1">Roboto</span><span class="s7">,</span><span class="s5"> </span><span class="s1">Helvetica</span><span class="s7">,</span><span class="s5"> </span><span class="s1">Arial</span><span class="s7">,</span><span class="s5"> </span><span class="s1">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s1"> #f8fafc</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s3">&lt;</span><span class="s4">body</span><span class="s5"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-slate-800"</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">div</span><span class="s5"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"root"</span><span class="s3">&gt;&lt;/</span><span class="s4">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p2"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s4">script</span><span class="s5"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text/babel"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const { useState, useEffect, useRef } = React;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const CarIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;🚖&lt;/div&gt;;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const LuggageIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;🧳&lt;/div&gt;;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const PoliceIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;👮&lt;/div&gt;;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const BurgerIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;🍔&lt;/div&gt;;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const WalkIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;🚶&lt;/div&gt;;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const PlaneTakeoffIcon = () =&gt; &lt;div className="text-xl leading-none"&gt;🛫&lt;/div&gt;;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const GearIcon = () =&gt; (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 fill-current"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.35a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;circle cx="12" cy="12" r="3" /&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>// --- 定制的大号时间选择器 ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const CustomTimePicker = ({ value, onChange, onClose }) =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [selectedHour, setSelectedHour] = useState(value.split(':')[0]);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [selectedMinute, setSelectedMinute] = useState(value.split(':')[1]);</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>// 生成小时和分钟数组</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const hours = Array.from({ length: 24 }, (_, i) =&gt; i.toString().padStart(2, '0'));</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const minutes = Array.from({ length: 60 }, (_, i) =&gt; i.toString().padStart(2, '0'));</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>// 自动滚动到选中位置的 Ref</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const hourListRef = useRef(null);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const minuteListRef = useRef(null);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>// 打开时滚动到当前选中时间</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const hEl = document.getElementById(`hour-${selectedHour}`);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const mEl = document.getElementById(`minute-${selectedMinute}`);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>if (hEl &amp;&amp; hourListRef.current) {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>hourListRef.current.scrollTop = hEl.offsetTop - hourListRef.current.offsetTop - 100;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>if (mEl &amp;&amp; minuteListRef.current) {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>minuteListRef.current.scrollTop = mEl.offsetTop - minuteListRef.current.offsetTop - 100;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>}, []);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const handleConfirm = () =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>onChange(`${selectedHour}:${selectedMinute}`);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>onClose();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose}&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>{/* 面板主体 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>className="bg-white w-full sm:w-96 h-[50vh] sm:h-[60vh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden"<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>onClick={(e) =&gt; e.stopPropagation()}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 顶部操作栏 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onClick={onClose} className="text-slate-500 text-sm font-medium p-2"&gt;取消&lt;/button&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span className="text-lg font-bold text-slate-700"&gt;选择起飞时间&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button onClick={handleConfirm} className="text-blue-600 text-sm font-bold bg-blue-50 px-4 py-2 rounded-full"&gt;确定&lt;/button&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 选择区域 - 两列布局 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1 flex overflow-hidden relative"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{/* 选中高亮条 (视觉辅助) */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="absolute top-1/2 left-0 right-0 h-12 bg-blue-50 -translate-y-1/2 pointer-events-none border-y border-blue-100"&gt;&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{/* 小时列 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1 flex flex-col h-full border-r border-slate-50"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-center text-xs text-slate-400 py-2 font-medium bg-white z-10"&gt;小时&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="flex-1 overflow-y-auto hide-scrollbar scroll-smooth pb-[50%]" ref={hourListRef}&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="h-[40%]"&gt;&lt;/div&gt; {/* 顶部占位 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>{hours.map(h =&gt; (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>key={h}<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>id={`hour-${h}`}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>onClick={() =&gt; setSelectedHour(h)}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>className={`py-3 text-center text-xl cursor-pointer transition-all duration-200 select-none ${</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>selectedHour === h<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>? 'font-bold text-blue-600 scale-125'<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>: 'text-slate-400 hover:text-slate-600'</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>}`}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>{h}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>))}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="h-[40%]"&gt;&lt;/div&gt; {/* 底部占位 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{/* 分钟列 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex-1 flex flex-col h-full"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="text-center text-xs text-slate-400 py-2 font-medium bg-white z-10"&gt;分钟&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="flex-1 overflow-y-auto hide-scrollbar scroll-smooth pb-[50%]" ref={minuteListRef}&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="h-[40%]"&gt;&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>{minutes.map(m =&gt; (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>key={m}<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>id={`minute-${m}`}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>onClick={() =&gt; setSelectedMinute(m)}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>className={`py-3 text-center text-xl cursor-pointer transition-all duration-200 select-none ${</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>selectedMinute === m<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>? 'font-bold text-blue-600 scale-125'<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                                </span>: 'text-slate-400 hover:text-slate-600'</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>}`}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                            </span>{m}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>))}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="h-[40%]"&gt;&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const SliderRow = ({ icon, title, value, setValue, min, max, leftLabel, rightLabel }) =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="py-4"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between items-center mb-3"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex items-center gap-3 font-medium text-slate-800"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{icon}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span className="text-base font-bold"&gt;{title}&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="font-bold text-slate-800 text-lg"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{value} &lt;span className="text-sm font-normal text-slate-500"&gt;分钟&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="relative h-6 flex items-center mb-1"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;input<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>type="range"<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>min={min}<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>max={max}<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>step="5"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>value={value}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>onChange={(e) =&gt; setValue(Number(e.target.value))}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>className="w-full z-10"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>className="absolute h-[6px] bg-blue-400 rounded-l-full pointer-events-none top-1/2 transform -translate-y-1/2 left-0"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>style={{ width: `${((value - min) / (max - min)) * 100}%` }}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex justify-between text-[10px] sm:text-xs text-slate-400 leading-tight"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span className="font-bold text-slate-700"&gt;{leftLabel}&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span className="text-slate-400 max-w-[50%] text-right"&gt;{rightLabel}&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const App = () =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [flightTime, setFlightTime] = useState('14:30');</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [showPicker, setShowPicker] = useState(false); // 控制自定义选择器显示</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [commuteMinutes, setCommuteMinutes] = useState(50);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [checkInMinutes, setCheckInMinutes] = useState(0);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [securityMinutes, setSecurityMinutes] = useState(20);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [diningMinutes, setDiningMinutes] = useState(20);<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [walkMinutes, setWalkMinutes] = useState(10);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [boardingBuffer, setBoardingBuffer] = useState(40);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const [result, setResult] = useState(null);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>if (!flightTime) return;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const [hours, minutes] = flightTime.split(':').map(Number);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const takeoffDate = new Date();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>takeoffDate.setHours(hours, minutes, 0, 0);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const gateArrival = new Date(takeoffDate.getTime() - boardingBuffer * 60000);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const startWalk = new Date(gateArrival.getTime() - walkMinutes * 60000);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const finishSecurity = new Date(startWalk.getTime() - diningMinutes * 60000);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const finishCheckIn = new Date(finishSecurity.getTime() - securityMinutes * 60000);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const arriveAirport = new Date(finishCheckIn.getTime() - checkInMinutes * 60000);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const leaveHome = new Date(arriveAirport.getTime() - commuteMinutes * 60000);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>const totalMinutes = commuteMinutes + checkInMinutes + securityMinutes + diningMinutes + walkMinutes + boardingBuffer;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>setResult({</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>leaveHome,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>arriveAirport,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>finishCheckIn,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>finishSecurity,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>startWalk,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>gateArrival,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>takeoffDate,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>totalMinutes</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>}, [flightTime, commuteMinutes, checkInMinutes, securityMinutes, diningMinutes, walkMinutes, boardingBuffer]);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>const formatTime = (date) =&gt; {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>return date ? date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false }) : '--:--';</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex justify-center"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col relative"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 蓝色头部 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="bg-[#3b82f6] text-white pt-8 pb-10 px-6 relative z-10"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{/* 标题区 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex items-center justify-center gap-3 mb-8"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;span className="text-5xl leading-none"&gt;✈️&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="flex flex-col items-start"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;h1 className="text-2xl font-bold tracking-widest leading-tight"&gt;赶飞机计算器&lt;/h1&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;p className="text-blue-100 text-xs tracking-wider opacity-90 leading-tight mt-1"&gt;倒推时间，从容出发&lt;/p&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>{/* 卡片区域 - 使用三栏弹性布局实现完美间距 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="flex items-stretch w-full"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>{/* 左侧：起飞时间卡片 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>className="flex-1 bg-white text-slate-800 rounded-lg p-2 aspect-[4/3] flex flex-col items-center justify-center shadow-lg relative active:scale-95 transition-transform group cursor-pointer"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>onClick={() =&gt; setShowPicker(true)}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="text-sm text-slate-500 mb-2 flex items-center justify-center gap-1"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>起飞时间<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span className="text-[10px] text-[#3b82f6] bg-blue-50 px-1.5 py-0.5 rounded font-medium"&gt;修改&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                    </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="text-5xl font-bold font-sans tracking-tight text-slate-900 group-active:scale-105 transition-transform"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>{flightTime}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>{/* 中间：箭头占位符 (定宽12 = 48px) */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="w-12 flex items-center justify-center text-white opacity-80 shrink-0"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;path d="M8 5v14l11-7z" /&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/svg&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>{/* 右侧：出门时间卡片 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="flex-1 bg-orange-500 text-white rounded-lg p-2 aspect-[4/3] flex flex-col items-center justify-center shadow-lg border-2 border-orange-500"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;span className="text-sm text-white mb-2 opacity-90"&gt;出门时间&lt;/span&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="text-5xl font-bold font-sans tracking-tight"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                        </span>{result ? formatTime(result.leaveHome) : '--:--'}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 总耗时区域 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-center mt-8 px-6 mb-4"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h2 className="text-xl font-bold text-slate-800 tracking-tight"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>全程预计耗时 : {result ? result.totalMinutes : 0}分钟</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/h2&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="relative flex items-center justify-center mt-6 mb-2"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="absolute inset-0 flex items-center"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="w-full border-t border-slate-300"&gt;&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div className="relative bg-white px-3 text-sm font-bold text-slate-600 flex items-center gap-2"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;GearIcon /&gt; 参数调整</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 参数调整列表 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex-1 px-6 pb-8 space-y-1 overflow-y-auto"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;CarIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="前往机场耗时"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={commuteMinutes} setValue={setCommuteMinutes} min={10} max={180}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${result ? formatTime(result.arriveAirport) : '--'} 到达机场`} rightLabel="请提前查询路况"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;LuggageIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="值机/托运耗时"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={checkInMinutes} setValue={setCheckInMinutes} min={0} max={120}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${result ? formatTime(result.finishCheckIn) : '--'} 值机/托运 完成`} rightLabel="手机值机且无托运可设为0"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;PoliceIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="安检/通关耗时"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={securityMinutes} setValue={setSecurityMinutes} min={10} max={120}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${result ? formatTime(result.finishSecurity) : '--'} 安检/通关 完成`} rightLabel="国际出发通关需酌情增加"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;BurgerIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="吃饭/休息室停留"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={diningMinutes} setValue={setDiningMinutes} min={0} max={180}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${result ? formatTime(result.startWalk) : '--'} 向登机口出发`} rightLabel="国际出发通关需酌情增加"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;WalkIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="步行至登机口时间"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={walkMinutes} setValue={setWalkMinutes} min={5} max={60}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${result ? formatTime(result.gateArrival) : '--'} 抵达登机口`} rightLabel="根据机场大小及是否使用休息室设定"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;SliderRow<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>icon={&lt;PlaneTakeoffIcon /&gt;}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>title="登机至起飞时间"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={boardingBuffer} setValue={setBoardingBuffer} min={20} max={60}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>leftLabel={`${flightTime} 起飞`} rightLabel="通常登机时间为起飞前40~50分钟"</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 底部 */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-center pb-8 pt-4 px-6 text-xs text-slate-500 leading-relaxed font-medium"&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;计算结果仅供参考，请预留充足时间&lt;/p&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;祝你旅途愉快！&lt;/p&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{/* 自定义时间选择器 (Portal) */}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>{showPicker &amp;&amp; (</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;CustomTimePicker<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>value={flightTime}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={setFlightTime}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span>onClose={() =&gt; setShowPicker(false)}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>const root = ReactDOM.createRoot(document.getElementById('root'));</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>root.render(&lt;App /&gt;);</span></p>
-<p class="p1"><span class="s5"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+<body class="text-slate-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const CarIcon = () => <div className="text-xl leading-none">🚖</div>;
+        const LuggageIcon = () => <div className="text-xl leading-none">🧳</div>;
+        const PoliceIcon = () => <div className="text-xl leading-none">👮</div>;
+        const BurgerIcon = () => <div className="text-xl leading-none">🍔</div>;
+        const WalkIcon = () => <div className="text-xl leading-none">🚶</div>;
+        const PlaneTakeoffIcon = () => <div className="text-xl leading-none">🛫</div>;
+        
+        const GearIcon = () => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 fill-current">
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.35a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                <circle cx="12" cy="12" r="3" />
+            </svg>
+        );
+
+        // --- 定制的大号时间选择器 ---
+        const CustomTimePicker = ({ value, onChange, onClose }) => {
+            const [selectedHour, setSelectedHour] = useState(value.split(':')[0]);
+            const [selectedMinute, setSelectedMinute] = useState(value.split(':')[1]);
+            
+            // 生成小时和分钟数组
+            const hours = Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, '0'));
+            const minutes = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0'));
+
+            // 自动滚动到选中位置的 Ref
+            const hourListRef = useRef(null);
+            const minuteListRef = useRef(null);
+
+            useEffect(() => {
+                // 打开时滚动到当前选中时间
+                const hEl = document.getElementById(`hour-${selectedHour}`);
+                const mEl = document.getElementById(`minute-${selectedMinute}`);
+                if (hEl && hourListRef.current) {
+                    hourListRef.current.scrollTop = hEl.offsetTop - hourListRef.current.offsetTop - 100;
+                }
+                if (mEl && minuteListRef.current) {
+                    minuteListRef.current.scrollTop = mEl.offsetTop - minuteListRef.current.offsetTop - 100;
+                }
+            }, []);
+
+            const handleConfirm = () => {
+                onChange(`${selectedHour}:${selectedMinute}`);
+                onClose();
+            };
+
+            return (
+                <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in" onClick={onClose}>
+                    {/* 面板主体 */}
+                    <div 
+                        className="bg-white w-full sm:w-96 h-[50vh] sm:h-[60vh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden" 
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* 顶部操作栏 */}
+                        <div className="flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50">
+                            <button onClick={onClose} className="text-slate-500 text-sm font-medium p-2">取消</button>
+                            <span className="text-lg font-bold text-slate-700">选择起飞时间</span>
+                            <button onClick={handleConfirm} className="text-blue-600 text-sm font-bold bg-blue-50 px-4 py-2 rounded-full">确定</button>
+                        </div>
+
+                        {/* 选择区域 - 两列布局 */}
+                        <div className="flex-1 flex overflow-hidden relative">
+                            {/* 选中高亮条 (视觉辅助) */}
+                            <div className="absolute top-1/2 left-0 right-0 h-12 bg-blue-50 -translate-y-1/2 pointer-events-none border-y border-blue-100"></div>
+
+                            {/* 小时列 */}
+                            <div className="flex-1 flex flex-col h-full border-r border-slate-50">
+                                <div className="text-center text-xs text-slate-400 py-2 font-medium bg-white z-10">小时</div>
+                                <div className="flex-1 overflow-y-auto hide-scrollbar scroll-smooth pb-[50%]" ref={hourListRef}>
+                                    <div className="h-[40%]"></div> {/* 顶部占位 */}
+                                    {hours.map(h => (
+                                        <div 
+                                            key={h} 
+                                            id={`hour-${h}`}
+                                            onClick={() => setSelectedHour(h)}
+                                            className={`py-3 text-center text-xl cursor-pointer transition-all duration-200 select-none ${
+                                                selectedHour === h 
+                                                ? 'font-bold text-blue-600 scale-125' 
+                                                : 'text-slate-400 hover:text-slate-600'
+                                            }`}
+                                        >
+                                            {h}
+                                        </div>
+                                    ))}
+                                    <div className="h-[40%]"></div> {/* 底部占位 */}
+                                </div>
+                            </div>
+
+                            {/* 分钟列 */}
+                            <div className="flex-1 flex flex-col h-full">
+                                <div className="text-center text-xs text-slate-400 py-2 font-medium bg-white z-10">分钟</div>
+                                <div className="flex-1 overflow-y-auto hide-scrollbar scroll-smooth pb-[50%]" ref={minuteListRef}>
+                                    <div className="h-[40%]"></div>
+                                    {minutes.map(m => (
+                                        <div 
+                                            key={m} 
+                                            id={`minute-${m}`}
+                                            onClick={() => setSelectedMinute(m)}
+                                            className={`py-3 text-center text-xl cursor-pointer transition-all duration-200 select-none ${
+                                                selectedMinute === m 
+                                                ? 'font-bold text-blue-600 scale-125' 
+                                                : 'text-slate-400 hover:text-slate-600'
+                                            }`}
+                                        >
+                                            {m}
+                                        </div>
+                                    ))}
+                                    <div className="h-[40%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const SliderRow = ({ icon, title, value, setValue, min, max, leftLabel, rightLabel }) => {
+            return (
+                <div className="py-4">
+                    <div className="flex justify-between items-center mb-3">
+                        <div className="flex items-center gap-3 font-medium text-slate-800">
+                            {icon}
+                            <span className="text-base font-bold">{title}</span>
+                        </div>
+                        <div className="font-bold text-slate-800 text-lg">
+                            {value} <span className="text-sm font-normal text-slate-500">分钟</span>
+                        </div>
+                    </div>
+                    
+                    <div className="relative h-6 flex items-center mb-1">
+                        <input 
+                            type="range" 
+                            min={min} 
+                            max={max} 
+                            step="5"
+                            value={value}
+                            onChange={(e) => setValue(Number(e.target.value))}
+                            className="w-full z-10"
+                        />
+                        <div 
+                            className="absolute h-[6px] bg-blue-400 rounded-l-full pointer-events-none top-1/2 transform -translate-y-1/2 left-0"
+                            style={{ width: `${((value - min) / (max - min)) * 100}%` }}
+                        ></div>
+                    </div>
+
+                    <div className="flex justify-between text-[10px] sm:text-xs text-slate-400 leading-tight">
+                        <span className="font-bold text-slate-700">{leftLabel}</span>
+                        <span className="text-slate-400 max-w-[50%] text-right">{rightLabel}</span>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [flightTime, setFlightTime] = useState('14:30');
+            const [showPicker, setShowPicker] = useState(false); // 控制自定义选择器显示
+            
+            const [commuteMinutes, setCommuteMinutes] = useState(50);
+            const [checkInMinutes, setCheckInMinutes] = useState(0);
+            const [securityMinutes, setSecurityMinutes] = useState(20);
+            const [diningMinutes, setDiningMinutes] = useState(20); 
+            const [walkMinutes, setWalkMinutes] = useState(10);
+            const [boardingBuffer, setBoardingBuffer] = useState(40);
+
+            const [result, setResult] = useState(null);
+
+            useEffect(() => {
+                if (!flightTime) return;
+
+                const [hours, minutes] = flightTime.split(':').map(Number);
+                const takeoffDate = new Date();
+                takeoffDate.setHours(hours, minutes, 0, 0);
+
+                const gateArrival = new Date(takeoffDate.getTime() - boardingBuffer * 60000);
+                const startWalk = new Date(gateArrival.getTime() - walkMinutes * 60000);
+                const finishSecurity = new Date(startWalk.getTime() - diningMinutes * 60000);
+                const finishCheckIn = new Date(finishSecurity.getTime() - securityMinutes * 60000);
+                const arriveAirport = new Date(finishCheckIn.getTime() - checkInMinutes * 60000);
+                const leaveHome = new Date(arriveAirport.getTime() - commuteMinutes * 60000);
+
+                const totalMinutes = commuteMinutes + checkInMinutes + securityMinutes + diningMinutes + walkMinutes + boardingBuffer;
+
+                setResult({
+                    leaveHome,
+                    arriveAirport,
+                    finishCheckIn,
+                    finishSecurity,
+                    startWalk,
+                    gateArrival,
+                    takeoffDate,
+                    totalMinutes
+                });
+
+            }, [flightTime, commuteMinutes, checkInMinutes, securityMinutes, diningMinutes, walkMinutes, boardingBuffer]);
+
+            const formatTime = (date) => {
+                return date ? date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false }) : '--:--';
+            };
+
+            return (
+                <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex justify-center">
+                    <div className="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col relative">
+                        
+                        {/* 蓝色头部 */}
+                        <div className="bg-[#3b82f6] text-white pt-8 pb-10 px-6 relative z-10">
+                            
+                            {/* 标题区 */}
+                            <div className="flex items-center justify-center gap-3 mb-8">
+                                <span className="text-5xl leading-none">✈️</span>
+                                <div className="flex flex-col items-start">
+                                    <h1 className="text-2xl font-bold tracking-widest leading-tight">赶飞机计算器</h1>
+                                    <p className="text-blue-100 text-xs tracking-wider opacity-90 leading-tight mt-1">倒推时间，从容出发</p>
+                                </div>
+                            </div>
+
+                            {/* 卡片区域 - 使用三栏弹性布局实现完美间距 */}
+                            <div className="flex items-stretch w-full">
+                                
+                                {/* 左侧：起飞时间卡片 */}
+                                <div 
+                                    className="flex-1 bg-white text-slate-800 rounded-lg p-2 aspect-[4/3] flex flex-col items-center justify-center shadow-lg relative active:scale-95 transition-transform group cursor-pointer"
+                                    onClick={() => setShowPicker(true)}
+                                >
+                                    <div className="text-sm text-slate-500 mb-2 flex items-center justify-center gap-1">
+                                        起飞时间 
+                                        <span className="text-[10px] text-[#3b82f6] bg-blue-50 px-1.5 py-0.5 rounded font-medium">修改</span>
+                                    </div>
+                                    
+                                    <div className="text-5xl font-bold font-sans tracking-tight text-slate-900 group-active:scale-105 transition-transform">
+                                        {flightTime}
+                                    </div>
+                                </div>
+
+                                {/* 中间：箭头占位符 (定宽12 = 48px) */}
+                                <div className="w-12 flex items-center justify-center text-white opacity-80 shrink-0">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+
+                                {/* 右侧：出门时间卡片 */}
+                                <div className="flex-1 bg-orange-500 text-white rounded-lg p-2 aspect-[4/3] flex flex-col items-center justify-center shadow-lg border-2 border-orange-500">
+                                    <span className="text-sm text-white mb-2 opacity-90">出门时间</span>
+                                    <div className="text-5xl font-bold font-sans tracking-tight">
+                                        {result ? formatTime(result.leaveHome) : '--:--'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 总耗时区域 */}
+                        <div className="text-center mt-8 px-6 mb-4">
+                            <h2 className="text-xl font-bold text-slate-800 tracking-tight">
+                                全程预计耗时 : {result ? result.totalMinutes : 0}分钟
+                            </h2>
+                            
+                            <div className="relative flex items-center justify-center mt-6 mb-2">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-slate-300"></div>
+                                </div>
+                                <div className="relative bg-white px-3 text-sm font-bold text-slate-600 flex items-center gap-2">
+                                    <GearIcon /> 参数调整
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 参数调整列表 */}
+                        <div className="flex-1 px-6 pb-8 space-y-1 overflow-y-auto">
+                            <SliderRow 
+                                icon={<CarIcon />}
+                                title="前往机场耗时"
+                                value={commuteMinutes} setValue={setCommuteMinutes} min={10} max={180}
+                                leftLabel={`${result ? formatTime(result.arriveAirport) : '--'} 到达机场`} rightLabel="请提前查询路况"
+                            />
+                            <SliderRow 
+                                icon={<LuggageIcon />}
+                                title="值机/托运耗时"
+                                value={checkInMinutes} setValue={setCheckInMinutes} min={0} max={120}
+                                leftLabel={`${result ? formatTime(result.finishCheckIn) : '--'} 值机/托运 完成`} rightLabel="手机值机且无托运可设为0"
+                            />
+                            <SliderRow 
+                                icon={<PoliceIcon />}
+                                title="安检/通关耗时"
+                                value={securityMinutes} setValue={setSecurityMinutes} min={10} max={120}
+                                leftLabel={`${result ? formatTime(result.finishSecurity) : '--'} 安检/通关 完成`} rightLabel="国际出发通关需酌情增加"
+                            />
+                            <SliderRow 
+                                icon={<BurgerIcon />}
+                                title="吃饭/休息室停留"
+                                value={diningMinutes} setValue={setDiningMinutes} min={0} max={180}
+                                leftLabel={`${result ? formatTime(result.startWalk) : '--'} 向登机口出发`} rightLabel="国际出发通关需酌情增加"
+                            />
+                            <SliderRow 
+                                icon={<WalkIcon />}
+                                title="步行至登机口时间"
+                                value={walkMinutes} setValue={setWalkMinutes} min={5} max={60}
+                                leftLabel={`${result ? formatTime(result.gateArrival) : '--'} 抵达登机口`} rightLabel="根据机场大小及是否使用休息室设定"
+                            />
+                            <SliderRow 
+                                icon={<PlaneTakeoffIcon />}
+                                title="登机至起飞时间"
+                                value={boardingBuffer} setValue={setBoardingBuffer} min={20} max={60}
+                                leftLabel={`${flightTime} 起飞`} rightLabel="通常登机时间为起飞前40~50分钟"
+                            />
+                        </div>
+
+                        {/* 底部 */}
+                        <div className="text-center pb-8 pt-4 px-6 text-xs text-slate-500 leading-relaxed font-medium">
+                            <p>计算结果仅供参考，请预留充足时间</p>
+                            <p>祝你旅途愉快！</p>
+                        </div>
+
+                        {/* 自定义时间选择器 (Portal) */}
+                        {showPicker && (
+                            <CustomTimePicker 
+                                value={flightTime}
+                                onChange={setFlightTime}
+                                onClose={() => setShowPicker(false)}
+                            />
+                        )}
+
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
