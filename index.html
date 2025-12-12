@@ -141,7 +141,6 @@ body {
  -webkit-tap-highlight-color: transparent;
  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
  background-color: #f8fafc;
- padding-top: env(safe-area-inset-top, 0);
  padding-left: env(safe-area-inset-left, 0);
  padding-right: env(safe-area-inset-right, 0);
 }
@@ -153,10 +152,15 @@ body::before {
  top: 0;
  left: 0;
  right: 0;
- height: env(safe-area-inset-top, 0);
+ height: max(env(safe-area-inset-top, 0), 44px);
  background: var(--status-bar-color);
- z-index: 50;
+ z-index: 9999;
  pointer-events: none;
+}
+
+/* 蓝色头部从顶部开始，内容区域避开状态栏 */
+.header-with-status-bar {
+ padding-top: max(env(safe-area-inset-top, 0), 44px);
 }
 </style>
 </head>
@@ -455,8 +459,8 @@ setTimeout(() => setIsFlying(false), 1200);
 return (
 <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex justify-center">
 <div className="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col relative">
-{/* 蓝色头部 - 增加 overflow-hidden */}
-<div className="bg-[#3b82f6] text-white pt-8 pb-10 px-6 relative z-10 overflow-hidden">
+      {/* 蓝色头部 - 增加 overflow-hidden */}
+      <div className="bg-[#3b82f6] text-white pb-10 px-6 relative z-10 overflow-hidden header-with-status-bar">
 {/* --- 背景装饰：纯白泡泡云 (轨道优化: 60px - 150px) + 景深模糊 (3px) --- */}
 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
 {/* 1. 小云 (远景) -> bottom:150px, blur-[3px] */}
