@@ -146,21 +146,14 @@ body {
 }
 
 /* 让状态栏区域呈现主题蓝色（PWA / iOS safemode） */
-body::before {
- content: "";
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: max(env(safe-area-inset-top, 0), 44px);
+.status-bar-spacer {
+ height: max(env(safe-area-inset-top, 0), 16px);
  background: var(--status-bar-color);
- z-index: 9999;
- pointer-events: none;
 }
 
 /* 蓝色头部从顶部开始，内容区域避开状态栏 */
 .header-with-status-bar {
- padding-top: max(env(safe-area-inset-top, 0), 44px);
+ padding-top: 12px;
 }
 </style>
 </head>
@@ -461,6 +454,7 @@ return (
 <div className="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col relative">
       {/* 蓝色头部 - 增加 overflow-hidden */}
       <div className="bg-[#3b82f6] text-white pb-10 px-6 relative z-10 overflow-hidden header-with-status-bar">
+        <div className="status-bar-spacer"></div>
 {/* --- 背景装饰：纯白泡泡云 (轨道优化: 60px - 150px) + 景深模糊 (3px) --- */}
 <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
 {/* 1. 小云 (远景) -> bottom:150px, blur-[3px] */}
